@@ -4,5 +4,11 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.10.1"
+  },
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "tauri:dev": "sh -c \"npx @tauri-apps/cli@2 dev src-tauri/Cargo.toml\"",
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:tauri:dev\"",
+    "build": "cd frontend && npm run build && cd .. && npx @tauri-apps/cli@2 build --manifest-path src-tauri/Cargo.toml"
   }
 }
